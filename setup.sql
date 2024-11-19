@@ -15,8 +15,8 @@ INSERT INTO task (
 (
     "walk the dog",
     "Take fido for a walk"
-)
+),
 (
     "Wash the car",
     "Car needs to be washed"
-)
+);

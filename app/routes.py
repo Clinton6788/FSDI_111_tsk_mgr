@@ -20,6 +20,22 @@ def scan():
     }
     return out                      # by default, Flask will return a status code of 200
 
+@app.get("/tasks/<int:pk>/")
+def fetch(pk):
+    out = task.select_by_id(pk)
+    if not out:
+        out = {
+            "ok": False
+        }
+        return out, 404
+    return out
+
+@app.post("/tasks")
+def create():
+    task_data = request.json
+    task.insert(task_data)
+    return "", 204
+    
 @app.put("/tasks/<int:pk>/")
 def update(pk):
     task_data = request.json
@@ -32,18 +48,3 @@ def delete(pk):
     task.delete_by_id(task_data, pk)
     return "", 204
 
-@app.post("/tasks")
-def create():
-    task_data = request.json
-    task.insert(task_data)
-    return "", 204
-
-@app.get("/tasks/<int:pk>/")
-def fetch(pk):
-    out = task.select_by_id(pk)
-    if not out:
-        out = {
-            "ok": False
-        }
-        return out, 404
-    return out
