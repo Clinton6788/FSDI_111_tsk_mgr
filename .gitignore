@@ -1,5 +1,8 @@
 # Virtual environment
-venv
-*__pychache__*
+venv/
+
+# Pycache
+*__pycache__*
+
 # Database files
 *.sqlite
