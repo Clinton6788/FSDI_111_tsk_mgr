@@ -44,7 +44,6 @@ def update(pk):
 
 @app.delete("/tasks/<int:pk>/")
 def delete(pk):
-    task_data = request.json
-    task.delete_by_id(task_data, pk)
+    task.delete_by_id(pk)
     return "", 204
 
